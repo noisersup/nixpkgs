@@ -11548,6 +11548,8 @@ self: super: with self; {
 
   tailscale = callPackage ../development/python-modules/tailscale { };
 
+  TakeTheTime = callPackage ../development/python-modules/TakeTheTime { };
+
   tank-utility = callPackage ../development/python-modules/tank-utility { };
 
   tappy = callPackage ../development/python-modules/tappy { };
