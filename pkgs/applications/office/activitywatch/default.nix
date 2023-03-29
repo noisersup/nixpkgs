@@ -6,7 +6,10 @@
 , perl
 , openssl
 , python3
-, qt6
+, wrapQtAppsHook
+, qtbase
+, qtsvg
+, xdg-utils
 , substituteAll
 , buildNpmPackage
 }:
@@ -83,19 +86,23 @@ rec {
 
     nativeBuildInputs = [
       python3.pkgs.poetry-core
-      qt6.wrapQtAppsHook
+      wrapQtAppsHook
     ];
 
     propagatedBuildInputs = with python3.pkgs; [
       aw-core
-      qt6.qtbase # Needed for qt6.wrapQtAppsHook
-      qt6.qtsvg # Rendering icons in the trayicon menu
+      qtbase
+      qtsvg # Rendering icons in the trayicon menu
       pyqt6
       click
     ];
 
     # Prevent double wrapping
     dontWrapQtApps = true;
+
+    makeWrapperArgs = [
+      "--suffix PATH : \"${lib.makeBinPath [ xdg-utils ]}\""
+    ];
 
     postPatch = ''
       sed -E 's#PyQt6 = "6.3.1"#PyQt6 = "^6.4.0"#g' -i pyproject.toml

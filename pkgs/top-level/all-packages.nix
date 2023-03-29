@@ -28751,7 +28751,7 @@ with pkgs;
 
   acorn = callPackage ../applications/networking/cluster/acorn { };
 
-  inherit (callPackage ../applications/office/activitywatch { })
+  inherit (qt6Packages.callPackage ../applications/office/activitywatch { })
     aw-qt
     aw-server-rust
     aw-watcher-afk
