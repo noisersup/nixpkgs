@@ -141,7 +141,12 @@ rec {
 
     src = "${sources}/aw-server-rust";
 
-    cargoHash = "sha256-d6A3YCid4/DsXuZTFKZxUoHu51lVaP3sf+lkV45dG8w=";
+    cargoLock = {
+      lockFile = ./Cargo.lock;
+      outputHashes = {
+        "rocket_cors-0.6.0-alpha1" = "sha256-GuMekgnsyuOg6lMiVvi4TwMba4sAFJ/zkgrdzSeBrv0=";
+      };
+    };
 
     # Bypass rust nightly features not being available on rust stable
     RUSTC_BOOTSTRAP = 1;
