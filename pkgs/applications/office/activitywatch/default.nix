@@ -151,6 +151,14 @@ rec {
     # Bypass rust nightly features not being available on rust stable
     RUSTC_BOOTSTRAP = 1;
 
+    patches = [
+      # Override version string with hardcoded value as it may be outdated upstream.
+      (substituteAll {
+        src = ./override-version.patch;
+        version = sources.rev;
+      })
+    ];
+
     nativeBuildInputs = [
       makeWrapper
       pkg-config
