@@ -206,6 +206,11 @@ rec {
         src = ./commit-hash.patch;
         commit_hash = sources.rev;
       })
+
+      (substituteAll {
+        src = ./librewolf.patch;
+        #commit_hash = sources.rev;
+      })
     ];
 
     installPhase = ''

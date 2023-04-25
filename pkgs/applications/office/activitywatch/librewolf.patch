@@ -1,0 +1,17 @@
+diff --git a/src/queries.ts b/src/queries.ts
+index 95b1760..8d2ac17 100644
+--- a/src/queries.ts
++++ b/src/queries.ts
+@@ -257,6 +257,12 @@ const browser_appnames = {
+     'Waterfox.exe',
+     'waterfox',
+     'waterfox.exe',
++
++    // Librewolf
++    'Librewolf',
++    'Librewolf.exe',
++    'librewolf',
++    'librewolf.exe',
+   ],
+   opera: ['opera.exe', 'Opera'],
+   brave: ['brave.exe'],
