@@ -26042,6 +26042,8 @@ with pkgs;
 
   azuredatastudio = callPackage ../applications/misc/azuredatastudio { };
 
+  BambuStudio = callPackage ../applications/misc/BambuStudio { };
+
   miniflux = callPackage ../servers/miniflux { };
 
   mir = callPackage ../servers/mir { };
