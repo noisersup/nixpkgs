@@ -1,0 +1,13 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 8aaa713..201f1dd 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -44,7 +44,7 @@ if (SLIC3R_GUI)
+         if (SLIC3R_WX_STABLE)
+             find_package(wxWidgets 3.0 REQUIRED COMPONENTS base core adv html gl aui net media webview)
+         else ()
+-            find_package(wxWidgets 3.1 REQUIRED COMPONENTS base core adv html gl aui net media webview)
++            find_package(wxWidgets 3.1)
+         endif ()
+     else ()
+         find_package(wxWidgets 3.1 REQUIRED COMPONENTS html adv gl core base webview aui net media)
