@@ -42,13 +42,15 @@ let
 in stdenv.mkDerivation {
   inherit pname version src;
 
+
   cmakeFlags = [
-    "-DCMAKE_BUILD_TYPE=Release"
-    "-DDEP_WX_GTK3=1"
-    "-DwxWidgets_INCLUDE_DIRS=${wxGTK-patched}"
-    "-DwxWidgets_LIBRARIES=${wxGTK-patched}/lib"
-    "-DwxWidgets_ROOT_DIR:PATH=${wxGTK-patched}"
+    #"-DCMAKE_BUILD_TYPE=Release"
+    #"-DDEP_WX_GTK3=1"
+    "-DwxWidgets_INCLUDE_DIRS=${wxGTK31}"
+    "-DwxWidgets_LIBRARIES=${wxGTK31}/lib"
+    #"-DwxWidgets_ROOT_DIR:PATH=${wxGTK-patched}"
   ];
+
 
 
   # nativeBuildInputs = [ cmake pkg-config gcc mesa dbus boost git libGL freetype
@@ -56,11 +58,17 @@ in stdenv.mkDerivation {
   # tbb openssl curl glew glfw cereal nlopt ilmbase cgal opencascade-occt
   # ];
 
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+  ];
+
   buildInputs = [
-  cmake pkg-config mesa dbus boost git libGL freetype
+  mesa dbus boost git libGL freetype
   libGLU cairo gtk3 libsoup openvdb wayland wayland-protocols libxkbcommon
   tbb openssl curl glew glfw cereal nlopt ilmbase cgal opencascade-occt
-  wxGTK-patched
+  #wxGTK-patched
+  wxGTK31
   ];
   #buildInputs = [
   #  wxGTK-patched
