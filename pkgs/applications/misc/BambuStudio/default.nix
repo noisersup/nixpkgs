@@ -13,6 +13,10 @@
 , tbb, openssl, curl, glew, glfw, cereal, nlopt, ilmbase, cgal, opencascade-occt
 , wxGTK32
 , libpng, libtiff
+, gst_all_1
+, pcre2
+, libunwind
+, elfutils
 }:
 let
   pname = "BambuStudio";
@@ -76,6 +80,10 @@ in stdenv.mkDerivation {
   wxGTK32
   libpng
   libtiff
+  gst_all_1.gstreamer
+  pcre2
+  libunwind
+  elfutils
   ];
   #buildInputs = [
   #  wxGTK-patched
