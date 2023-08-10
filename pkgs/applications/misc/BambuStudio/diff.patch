@@ -1,13 +1,20 @@
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 8aaa713..201f1dd 100644
+index 8aaa7138..855b7442 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -44,7 +44,7 @@ if (SLIC3R_GUI)
+@@ -42,12 +42,12 @@ if (SLIC3R_GUI)
+     if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+         set (wxWidgets_CONFIG_OPTIONS "--toolkit=gtk${SLIC3R_GTK}")
          if (SLIC3R_WX_STABLE)
-             find_package(wxWidgets 3.0 REQUIRED COMPONENTS base core adv html gl aui net media webview)
+-            find_package(wxWidgets 3.0 REQUIRED COMPONENTS base core adv html gl aui net media webview)
++            find_package(wxWidgets 3.0)
          else ()
 -            find_package(wxWidgets 3.1 REQUIRED COMPONENTS base core adv html gl aui net media webview)
 +            find_package(wxWidgets 3.1)
          endif ()
      else ()
-         find_package(wxWidgets 3.1 REQUIRED COMPONENTS html adv gl core base webview aui net media)
+-        find_package(wxWidgets 3.1 REQUIRED COMPONENTS html adv gl core base webview aui net media)
++        find_package(wxWidgets 3.1)
+     endif ()
+ 
+     if(UNIX)

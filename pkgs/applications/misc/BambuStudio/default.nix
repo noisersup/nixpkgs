@@ -11,7 +11,8 @@
 , freetype
 , libGLU, cairo, gtk3, libsoup,  openvdb, wayland, wayland-protocols, libxkbcommon
 , tbb, openssl, curl, glew, glfw, cereal, nlopt, ilmbase, cgal, opencascade-occt
-, wxGTK31
+, wxGTK32
+, libpng, libtiff
 }:
 let
   pname = "BambuStudio";
@@ -26,29 +27,33 @@ let
 
   bambuSrc = src;
 
-  wxGTK-patched = wxGTK31.overrideAttrs (old: rec {
-    patches = old.patches ++ [
-      ("${bambuSrc}/deps/wxWidgets/0001-wxWidget-fix.patch")
-    ];
+  #wxGTK-patched = wxGTK31.overrideAttrs (old: rec {
+  #  patches = old.patches ++ [
+  #    ("${bambuSrc}/deps/wxWidgets/0001-wxWidget-fix.patch")
+  #  ];
 
-    src = fetchFromGitHub {
-      owner = "wxWidgets";
-      repo = "wxWidgets";
-      rev = "v3.1.5";
-      hash = "sha256-2zMvcva0GUDmSYK0Wk3/2Y6R3F7MgdqGBrOhmWgVA6g=";
-      fetchSubmodules = true;
-    };
-  });
+  #  src = fetchFromGitHub {
+  #    owner = "wxWidgets";
+  #    repo = "wxWidgets";
+  #    rev = "v3.1.5";
+  #    hash = "sha256-2zMvcva0GUDmSYK0Wk3/2Y6R3F7MgdqGBrOhmWgVA6g=";
+  #    fetchSubmodules = true;
+  #  };
+  #});
 in stdenv.mkDerivation {
   inherit pname version src;
+
+  patches = [
+    ./diff.patch
+  ];
 
 
   cmakeFlags = [
     #"-DCMAKE_BUILD_TYPE=Release"
-    #"-DDEP_WX_GTK3=1"
-    "-DwxWidgets_INCLUDE_DIRS=${wxGTK31}"
-    "-DwxWidgets_LIBRARIES=${wxGTK31}/lib"
-    #"-DwxWidgets_ROOT_DIR:PATH=${wxGTK-patched}"
+    "-DDEP_WX_GTK3=1"
+    "-DwxWidgets_INCLUDE_DIRS=${wxGTK32}"
+    "-DwxWidgets_LIBRARIES=${wxGTK32}/lib"
+    "-DwxWidgets_ROOT_DIR:PATH=${wxGTK32}"
   ];
 
 
@@ -68,7 +73,9 @@ in stdenv.mkDerivation {
   libGLU cairo gtk3 libsoup openvdb wayland wayland-protocols libxkbcommon
   tbb openssl curl glew glfw cereal nlopt ilmbase cgal opencascade-occt
   #wxGTK-patched
-  wxGTK31
+  wxGTK32
+  libpng
+  libtiff
   ];
   #buildInputs = [
   #  wxGTK-patched
