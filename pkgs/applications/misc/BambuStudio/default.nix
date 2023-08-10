@@ -17,6 +17,8 @@
 , pcre2
 , libunwind
 , elfutils
+, gtk2
+, glib
 }:
 let
   pname = "BambuStudio";
@@ -47,17 +49,19 @@ let
 in stdenv.mkDerivation {
   inherit pname version src;
 
-  patches = [
-    ./diff.patch
-  ];
+  #patches = [
+  #  ./diff.patch
+  #];
 
 
   cmakeFlags = [
-    #"-DCMAKE_BUILD_TYPE=Release"
+    "-DCMAKE_BUILD_TYPE=Release"
     "-DDEP_WX_GTK3=1"
     "-DwxWidgets_INCLUDE_DIRS=${wxGTK32}"
     "-DwxWidgets_LIBRARIES=${wxGTK32}/lib"
     "-DwxWidgets_ROOT_DIR:PATH=${wxGTK32}"
+    "-DGTK2_GDKCONFIG_INCLUDE_DIR=${gtk2.out}/lib/gtk-2.0/include"
+    "-DGTK2_GLIBCONFIG_INCLUDE_DIR=${glib.out}/lib/glib-2.0/include"
   ];
 
 
@@ -84,6 +88,8 @@ in stdenv.mkDerivation {
   pcre2
   libunwind
   elfutils
+  gtk2
+  glib
   ];
   #buildInputs = [
   #  wxGTK-patched

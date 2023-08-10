@@ -1,5 +1,5 @@
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 8aaa7138..855b7442 100644
+index 8aaa7138..be1d0948 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -42,12 +42,12 @@ if (SLIC3R_GUI)
@@ -18,3 +18,53 @@ index 8aaa7138..855b7442 100644
      endif ()
  
      if(UNIX)
+@@ -59,29 +59,29 @@ if (SLIC3R_GUI)
+     find_package(JPEG QUIET)
+     find_package(TIFF QUIET)
+ 
+-    string(REGEX MATCH "wxpng" WX_PNG_BUILTIN ${wxWidgets_LIBRARIES})
+-    if (PNG_FOUND AND NOT WX_PNG_BUILTIN)
+-        list(FILTER wxWidgets_LIBRARIES EXCLUDE REGEX png)
+-        list(APPEND wxWidgets_LIBRARIES ${PNG_LIBRARIES})
+-    endif ()
++	# string(REGEX MATCH "wxpng" WX_PNG_BUILTIN ${wxWidgets_LIBRARIES})
++    # if (PNG_FOUND AND NOT WX_PNG_BUILTIN)
++    #     list(FILTER wxWidgets_LIBRARIES EXCLUDE REGEX png)
++    #     list(APPEND wxWidgets_LIBRARIES ${PNG_LIBRARIES})
++    # endif ()
+ 
+-    string(REGEX MATCH "wxtiff" WX_TIFF_BUILTIN ${wxWidgets_LIBRARIES})
+-    if (TIFF_FOUND AND NOT WX_TIFF_BUILTIN)
+-        list(FILTER wxWidgets_LIBRARIES EXCLUDE REGEX tiff)
+-        list(APPEND wxWidgets_LIBRARIES ${TIFF_LIBRARIES})
+-    endif ()
++    # string(REGEX MATCH "wxtiff" WX_TIFF_BUILTIN ${wxWidgets_LIBRARIES})
++    # if (TIFF_FOUND AND NOT WX_TIFF_BUILTIN)
++    #     list(FILTER wxWidgets_LIBRARIES EXCLUDE REGEX tiff)
++    #     list(APPEND wxWidgets_LIBRARIES ${TIFF_LIBRARIES})
++    # endif ()
+ 
+-    string(REGEX MATCH "wxjpeg" WX_JPEG_BUILTIN ${wxWidgets_LIBRARIES})
+-    if (JPEG_FOUND AND NOT WX_JPEG_BUILTIN)
+-        list(FILTER wxWidgets_LIBRARIES EXCLUDE REGEX jpeg)
+-        list(APPEND wxWidgets_LIBRARIES ${JPEG_LIBRARIES})
+-    endif ()
++    # string(REGEX MATCH "wxjpeg" WX_JPEG_BUILTIN ${wxWidgets_LIBRARIES})
++    # if (JPEG_FOUND AND NOT WX_JPEG_BUILTIN)
++    #     list(FILTER wxWidgets_LIBRARIES EXCLUDE REGEX jpeg)
++    #     list(APPEND wxWidgets_LIBRARIES ${JPEG_LIBRARIES})
++    # endif ()
+ 
+-    string(REGEX MATCH "wxexpat" WX_EXPAT_BUILTIN ${wxWidgets_LIBRARIES})
+-    if (EXPAT_FOUND AND NOT WX_EXPAT_BUILTIN)
+-        list(FILTER wxWidgets_LIBRARIES EXCLUDE REGEX expat)
+-        list(APPEND wxWidgets_LIBRARIES ${EXPAT_LIBRARIES})
+-    endif ()
++    # string(REGEX MATCH "wxexpat" WX_EXPAT_BUILTIN ${wxWidgets_LIBRARIES})
++    # if (EXPAT_FOUND AND NOT WX_EXPAT_BUILTIN)
++    #     list(FILTER wxWidgets_LIBRARIES EXCLUDE REGEX expat)
++    #     list(APPEND wxWidgets_LIBRARIES ${EXPAT_LIBRARIES})
++    # endif ()
+     
+     # This is an issue in the new wxWidgets cmake build, doesn't deal with librt
+     find_library(LIBRT rt)
